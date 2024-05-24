@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title> blog </title>
+    </head>
+    <body>
+        <h1>
+            {% csrf_token %}
+            Helooo
+         
+            {% block content %}
+            {% for post in posts %}
+            <div>
+                <div>
+             {{post.published_date }}</div>
+                <h1> <a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title }}</h1>
+                <p> {{ post.text | linebreaksbr }} </p>
+            </div>
+            {% endfor %}
+            {% endblock %}
+        </h1>
+    </body>
+</html>

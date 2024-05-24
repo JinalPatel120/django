@@ -1,0 +1,17 @@
+
+
+<html>
+    <head>
+        <title>  my blog </title>
+
+    </head>
+    <body><div>
+        <h1> <a href='/'> My blog</a></h1>
+        <div> <a href="{% url 'post_new' %}"> Add Post </a></div>
+    </div>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+    </body>
+</html>
