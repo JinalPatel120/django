@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title> Pagination</title>
+    </head>
+       
+    <body>
+        <form method="POST">
+       {% csrf_token %}
+       {{ form.as_table }}
+          <button type='Submit'> Submit</button>
+          <a href=" {% url 'display' %}"> Show data</a>
+        </form>
+    </body>
+</html>

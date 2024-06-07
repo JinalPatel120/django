@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>
+            display
+            </title>
+    </head>
+    <body>        
+            <table border="1">
+                <tr>
+                    <th> Name</th>
+                    <th> Last Name</th>
+                    <th> Actions </th>
+                    <th> Edit </th>
+                </tr>
+                {% for i in page_obj %}
+                <tr>
+                    <td> {{ i.name }}</td>
+                    <td>{{ i.lname }} </td>
+                    <td><a href='/delete/{{ i.id }}'> Delete </a></td>
+                    <td><a href='/update/{{ i.id }}'> Update </a></td>                    
+                </tr>
+                {% endfor %}
+            </table>
+            {% if page_obj.has_other_pages %}
+            <ul>
+                {% if page_obj.has_previous %}
+                <li><a href="?page=1"> First</a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}"> Previous</a></li>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                <li{% if page_obj.number == num %}
+                    class="selected"{% endif %}>
+                    <a href='?page={{ num }}'>{{ num }} </a>
+                </li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li> <a href="?page= {{ page_obj.next_page_number }}"> Next </a></li>
+                <li> <a href="?page= page_obj.paginator.num_pages "> Last</li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+
+            <a href='{% url "index" %}'>Back </a>
+        </body>
+</html>
+
+
